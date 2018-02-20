@@ -447,7 +447,7 @@ abstract class Model extends IlluminateModel {
      * @param  string  $id
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function morphTo($name = null, $type = null, $id = null)
+    public function morphTo($name = NULL, $type = NULL, $id = NULL, $ownerKey = NULL)
     {
 
         // When the name and the type are specified we'll return a MorphedByOne
@@ -491,7 +491,7 @@ abstract class Model extends IlluminateModel {
             $instance = new $class;
 
             return new MorphTo(
-                with($instance)->newQuery(), $this, $id, $instance->getKeyName(), $type, $name
+                with($instance)->newQuery(), $this, $id, $ownerKey, $type, $name
             );
         }
     }
